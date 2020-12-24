@@ -4,9 +4,13 @@ class ApplicationController < ActionController::Base
   
   private
   
-  def require_user_logged_in
+  def require_user_logged_in #ログイン状態を確認しログインしていなければログインページへ
     unless logged_in?
       redirect_to login_url
     end
+  end
+  
+  def counts(user)
+    @count_microposts = user.microposts.count
   end
 end
